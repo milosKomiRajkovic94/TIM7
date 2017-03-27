@@ -4,6 +4,7 @@
 		<jta-data-source>java:jboss/datasource/mysql</jta-data-source>
 		<class>model.Administrator</class>
 		<class>model.DodatniPodaci</class>
+		<class>model.Forum</class>
 		<class>model.Knjiga2</class>
 		<class>model.Komentar</class>
 		<class>model.Korisnik</class>
