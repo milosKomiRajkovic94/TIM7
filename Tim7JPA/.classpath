@@ -14,5 +14,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="D:/wildfly-10.1.0.Final/bin/client/jboss-client.jar"/>
+	<classpathentry kind="lib" path="D:/Miloš/tehnologije/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
