@@ -17,7 +17,7 @@ body {font-family: "Raleway", Arial, sans-serif}
 </head>
 <body>
 	<h3> Unesite podatke za registraciju. </h3>
-	<form action="/Tim7Web/RegistracioniServlet" method="post"> 
+	<form action="/Tim7WEB/RegistracioniServlet" method="post"> 
 		<table>
 			<tr>
 				<td>Ime: </td>
@@ -32,7 +32,7 @@ body {font-family: "Raleway", Arial, sans-serif}
 				<td><input name="mesto" type="text"></input></td>
 			</tr>
 			<tr>
-				<td>Datum rodjenja: </td>
+				<td>Datum rodjenja  (yyyy-mm-dd): </td>
 				<td><input name="datumRodjenja" type="text"></input></td>
 			</tr>
 			<tr>

@@ -11,6 +11,7 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="KORISNIK")
 @NamedQuery(name="Korisnik.findAll", query="SELECT k FROM Korisnik k")
 public class Korisnik implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,7 +23,16 @@ public class Korisnik implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATUM_RODJENJA")
 	private Date datumRodjenja;
-
+	
+	public  Korisnik (Date datum, String email, String ime, String mesto, String password, String prezime){
+		this.datumRodjenja = datum;
+		this.email = email;
+		this.ime = ime;
+		this.mesto = mesto;
+		this.password = password;
+		this.prezime = prezime;
+	}
+	
 	private String email;
 
 	private String ime;
