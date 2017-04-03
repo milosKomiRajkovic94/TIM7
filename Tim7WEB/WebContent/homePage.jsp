@@ -24,7 +24,7 @@ body {font-family: "Raleway", Arial, sans-serif}
 	
 	<br>
 	
-	<form action = "/Tim7Web/LogInServlet" method="post">
+	<form action = "/Tim7WEB/LogInServlet" method="post">
 			<table>
 				<tr> 
 					<td> Unesite vas e-mail: </td>
