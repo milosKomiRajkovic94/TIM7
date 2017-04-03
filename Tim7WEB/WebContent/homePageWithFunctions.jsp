@@ -18,6 +18,13 @@ body {font-family: "Raleway", Arial, sans-serif}
 <body>
 	<h2> Dobrodosli na nasu pocetnu stranicu korisnice ${k.ime} ${k.prezime} !</h2>
 	
-	<h4> OVDE ISPOD RADIMO FUNKCIJE MOMCI!!</h4>
+	<b>Postovani korisnice, ispod su vam dostupne funkcije: </b>
+	
+	<center>
+			<form action="insertionOfBook.jsp">
+				<button type="submit">Unos knjige</button>
+			</form>
+	</center>
+	
 </body>
 </html>
