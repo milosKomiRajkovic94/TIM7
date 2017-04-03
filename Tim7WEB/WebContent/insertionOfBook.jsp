@@ -53,10 +53,18 @@ body {font-family: "Raleway", Arial, sans-serif}
 	</form>
 		
 	${message}
-	
+	<table>
+	<tr>
+	<td>
 	<form action="homePageWithFunctions.jsp">
 				<button type="submit"><- Povratak na pocetnu stranicu sa funkcijama!</button>
 	</form>
-
+	<form action="LogOutServlet" method="post">
+		<input type="submit" value="Odjavi se"> 
+	</form>
+	</td>
+	</tr>
+	</table>
+	
 </body>
 </html>

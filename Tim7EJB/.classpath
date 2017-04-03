@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="ejbModule"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/wildfly-10.1.0.Final/bin/client/jboss-client.jar"/>
+	<classpathentry kind="lib" path="D:/Miloš/tehnologije/wildfly-10.1.0.Final/bin/client/jboss-client.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Tim7JPA"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.jboss.ide.eclipse.as.core.server.runtime.runtimeTarget/WildFly 10.x Runtime">
 		<attributes>

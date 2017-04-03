@@ -26,5 +26,8 @@ body {font-family: "Raleway", Arial, sans-serif}
 			</form>
 	</center>
 	
+	<form action="LogOutServlet" method="post">
+		<input type="submit" value="Odjavi se"> 
+</form>
 </body>
 </html>
