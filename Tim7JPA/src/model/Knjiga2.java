@@ -10,17 +10,28 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="KNJIGA2")
 @NamedQuery(name="Knjiga2.findAll", query="SELECT k FROM Knjiga2 k")
 public class Knjiga2 implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	public Knjiga2(String autor,boolean bestseller,String naslov,String oblast,String opis,byte[] img,Korisnik k){
+		this.autor = autor;
+		this.bestseller = bestseller;
+		this.naslov = naslov;
+		this.oblast = oblast;
+		this.opis = opis;
+		this.slika = img;
+		this.korisnik = k;
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idknjiga;
 
 	private String autor;
 
-	private byte bestseller;
+	private boolean bestseller;
 
 	private String naslov;
 
@@ -35,23 +46,23 @@ public class Knjiga2 implements Serializable {
 	@OneToMany(mappedBy="knjiga2")
 	private List<DodatniPodaci> dodatniPodacis;
 
-	//bi-directional many-to-one association to Administrator
+	//bi-directional many-to-one association to Korisnik
 	@ManyToOne
-	@JoinColumn(name="IDADMINISTRATOR")
-	private Administrator administrator;
+	@JoinColumn(name="IDKORISNIKA")
+	private Korisnik korisnik;
 
-	//bi-directional many-to-many association to Korisnik
+	//bi-directional many-to-many association to Administrator
 	@ManyToMany
 	@JoinTable(
-		name="KNJIGA2_KORISNIK"
+		name="KNJIGA2_ADMINISTRATOR"
 		, joinColumns={
 			@JoinColumn(name="IDKNJIGA")
 			}
 		, inverseJoinColumns={
-			@JoinColumn(name="IDKORISNIKA")
+			@JoinColumn(name="IDADMINISTRATOR")
 			}
 		)
-	private List<Korisnik> korisniks;
+	private List<Administrator> administrators;
 
 	public Knjiga2() {
 	}
@@ -72,11 +83,11 @@ public class Knjiga2 implements Serializable {
 		this.autor = autor;
 	}
 
-	public byte getBestseller() {
+	public boolean getBestseller() {
 		return this.bestseller;
 	}
 
-	public void setBestseller(byte bestseller) {
+	public void setBestseller(boolean bestseller) {
 		this.bestseller = bestseller;
 	}
 
@@ -134,20 +145,20 @@ public class Knjiga2 implements Serializable {
 		return dodatniPodaci;
 	}
 
-	public Administrator getAdministrator() {
-		return this.administrator;
+	public Korisnik getKorisnik() {
+		return this.korisnik;
 	}
 
-	public void setAdministrator(Administrator administrator) {
-		this.administrator = administrator;
+	public void setKorisnik(Korisnik korisnik) {
+		this.korisnik = korisnik;
 	}
 
-	public List<Korisnik> getKorisniks() {
-		return this.korisniks;
+	public List<Administrator> getAdministrators() {
+		return this.administrators;
 	}
 
-	public void setKorisniks(List<Korisnik> korisniks) {
-		this.korisniks = korisniks;
+	public void setAdministrators(List<Administrator> administrators) {
+		this.administrators = administrators;
 	}
 
 }

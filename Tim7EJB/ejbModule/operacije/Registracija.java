@@ -5,6 +5,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import model.Knjiga2;
 import model.Korisnik;
 
 /**
@@ -27,6 +28,14 @@ public class Registracija implements RegistracijaRemote {
 	public boolean registracijaKorisnika(Korisnik k2) {
 		// TODO Auto-generated method stub
 		em.persist(k2);
+		return true;
+	}
+
+
+	@Override
+	public boolean unesiKnjigu(Knjiga2 k) {
+		// TODO Auto-generated method stub
+		em.persist(k);
 		return true;
 	}
 }

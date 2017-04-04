@@ -15,7 +15,16 @@ import java.util.List;
 @NamedQuery(name="Korisnik.findAll", query="SELECT k FROM Korisnik k")
 public class Korisnik implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	public Korisnik(Date datum, String ime, String prezime, String email, String password, String mesto){
+		this.datumRodjenja = datum;
+		this.ime = ime;
+		this.prezime = prezime;
+		this.email = email;
+		this.password = password;
+		this.mesto = mesto;
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idkorisnika;
@@ -23,16 +32,7 @@ public class Korisnik implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATUM_RODJENJA")
 	private Date datumRodjenja;
-	
-	public  Korisnik (Date datum, String email, String ime, String mesto, String password, String prezime){
-		this.datumRodjenja = datum;
-		this.email = email;
-		this.ime = ime;
-		this.mesto = mesto;
-		this.password = password;
-		this.prezime = prezime;
-	}
-	
+
 	private String email;
 
 	private String ime;
@@ -43,13 +43,13 @@ public class Korisnik implements Serializable {
 
 	private String prezime;
 
-	//bi-directional many-to-many association to Knjiga2
-	@ManyToMany(mappedBy="korisniks")
-	private List<Knjiga2> knjiga2s;
-
 	//bi-directional many-to-one association to Forum
 	@OneToMany(mappedBy="korisnik")
 	private List<Forum> forums;
+
+	//bi-directional many-to-one association to Knjiga2
+	@OneToMany(mappedBy="korisnik")
+	private List<Knjiga2> knjiga2s;
 
 	public Korisnik() {
 	}
@@ -110,14 +110,6 @@ public class Korisnik implements Serializable {
 		this.prezime = prezime;
 	}
 
-	public List<Knjiga2> getKnjiga2s() {
-		return this.knjiga2s;
-	}
-
-	public void setKnjiga2s(List<Knjiga2> knjiga2s) {
-		this.knjiga2s = knjiga2s;
-	}
-
 	public List<Forum> getForums() {
 		return this.forums;
 	}
@@ -138,6 +130,28 @@ public class Korisnik implements Serializable {
 		forum.setKorisnik(null);
 
 		return forum;
+	}
+
+	public List<Knjiga2> getKnjiga2s() {
+		return this.knjiga2s;
+	}
+
+	public void setKnjiga2s(List<Knjiga2> knjiga2s) {
+		this.knjiga2s = knjiga2s;
+	}
+
+	public Knjiga2 addKnjiga2(Knjiga2 knjiga2) {
+		getKnjiga2s().add(knjiga2);
+		knjiga2.setKorisnik(this);
+
+		return knjiga2;
+	}
+
+	public Knjiga2 removeKnjiga2(Knjiga2 knjiga2) {
+		getKnjiga2s().remove(knjiga2);
+		knjiga2.setKorisnik(null);
+
+		return knjiga2;
 	}
 
 }

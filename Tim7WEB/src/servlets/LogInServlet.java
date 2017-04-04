@@ -47,7 +47,7 @@ public class LogInServlet extends HttpServlet {
 		String message = "";
 		Korisnik k = rem.ulogujKorisnika(email, password);
 		if(k != null){
-			request.setAttribute("k", k);
+			request.getSession().setAttribute("k", k);
 			request.getRequestDispatcher("homePageWithFunctions.jsp").forward(request, response);
 		}else{
 			message = "Bezuspesno prijavljivanje! Pokusajte opet ili se registrujte, ako vec niste.";

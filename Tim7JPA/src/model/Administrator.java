@@ -32,8 +32,8 @@ public class Administrator implements Serializable {
 
 	private String prezime;
 
-	//bi-directional many-to-one association to Knjiga2
-	@OneToMany(mappedBy="administrator")
+	//bi-directional many-to-many association to Knjiga2
+	@ManyToMany(mappedBy="administrators")
 	private List<Knjiga2> knjiga2s;
 
 	//bi-directional many-to-one association to Sajmovi
@@ -105,20 +105,6 @@ public class Administrator implements Serializable {
 
 	public void setKnjiga2s(List<Knjiga2> knjiga2s) {
 		this.knjiga2s = knjiga2s;
-	}
-
-	public Knjiga2 addKnjiga2(Knjiga2 knjiga2) {
-		getKnjiga2s().add(knjiga2);
-		knjiga2.setAdministrator(this);
-
-		return knjiga2;
-	}
-
-	public Knjiga2 removeKnjiga2(Knjiga2 knjiga2) {
-		getKnjiga2s().remove(knjiga2);
-		knjiga2.setAdministrator(null);
-
-		return knjiga2;
 	}
 
 	public List<Sajmovi> getSajmovis() {

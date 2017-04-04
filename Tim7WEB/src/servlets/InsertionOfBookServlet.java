@@ -45,17 +45,55 @@ public class InsertionOfBookServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	//dodaću samo svoj red sa ucitavanje slike a Milos ce dodati onda sve drugo
+	//Dodavanje ostatka metoda za unos knjige.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String putanja = request.getParameter("slika");
-		byte[] img = extractBytes(putanja);	
+		Korisnik k = (Korisnik) request.getSession().getAttribute("k");
+		String naslov = request.getParameter("naslov"); 
+		String autor = request.getParameter("autor");
+		String oblast = request.getParameter("oblast");
+		String opis = request.getParameter("opis");
+		String best = request.getParameter("bestseller");
+		boolean bestseller = false;
+		if(best == "true"){
+			bestseller = true;
+			String file = request.getParameter("slika");
+			byte[] img = extractBytes(file);
+			//nije dobra provera pokusacu Exception da napravim, ali u svakom slucaju unosi slike u tom okviru.
+			if(img.length < 4147339){
+				Knjiga2 knjiga = new Knjiga2(autor, bestseller, naslov, oblast, opis, img, k);
+				if(rrm.unesiKnjigu(knjiga)){
+					String message = "Uspesan unos knjige!";
+					request.setAttribute("message", message);
+					request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
+				}
+			}else{
+				String message = "Neuspesan unos knjige, zbog velicine slike, kompresujte sliku!";
+				request.setAttribute("message", message);
+				request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
+			}
+		}else{
+			String file = request.getParameter("slika");
+			byte[] img = extractBytes(file);
+			if(img.length < 4147339){
+				Knjiga2 knjiga = new Knjiga2(autor, bestseller, naslov, oblast, opis, img, k);
+				if(rrm.unesiKnjigu(knjiga)){
+					String message = "Uspesan unos knjige!";
+					request.setAttribute("message", message);
+					request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
+				}
+			}else{
+				String message = "Neuspesan unos knjige, zbog velicine slike, kompresujte sliku!";
+				request.setAttribute("message", message);
+				request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
+			}
+		}
 	}
-
+	
 	/*
-		Metoda za pretvaranje fajla  (putanje do fajla) u niz bajtova, kako bi sacuvali istu sliku
-		u bazi podataka.
-	*/	
+	Metoda za pretvaranje fajla  (putanje do fajla) u niz bajtova, kako bi sacuvali istu sliku
+	u bazi podataka.
+	 */
 	public byte[] extractBytes (String ImageName) throws IOException {
 		 // open image
 		 File imgPath = new File(ImageName);

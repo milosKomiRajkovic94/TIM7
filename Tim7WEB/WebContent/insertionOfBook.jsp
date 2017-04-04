@@ -16,7 +16,7 @@ body {font-family: "Raleway", Arial, sans-serif}
 </head>
 </head>
 <body>
-	<form action="/Tim7Web/InsertionOfBookServlet" method="post"> 
+	<form action="/Tim7WEB/InsertionOfBookServlet" method="post"> 
 		<h2> Unesite podatke o knjizi korsnice ${k.ime} ${k.prezime}: </h2>
 		
 		<table>
@@ -38,8 +38,12 @@ body {font-family: "Raleway", Arial, sans-serif}
 			</tr>
 			<tr>
 				<td>Da li je bestseller? </td>
-				<td><input name="bestseller" type="radio" value="true"> <b> Da </b> </td>
-				<td><input name="bestseller" type="radio" value="false" checked><b> Ne </b> </td>
+				<td>
+				<div class ="radio">
+				<input name="bestseller" type="radio" value="true"> <b> Da </b> </div> </td>
+				<td>
+				<div class ="radio">
+				<input name="bestseller" type="radio" value="false" checked><b> Ne </b></div></td>
 			</tr>
 			<tr>
 				<td>Izaberite sliku sa racunara ako zelite (do 4147339 bajtova)  </td>
