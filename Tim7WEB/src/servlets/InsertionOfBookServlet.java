@@ -49,41 +49,44 @@ public class InsertionOfBookServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Korisnik k = (Korisnik) request.getSession().getAttribute("k");
-		String naslov = request.getParameter("naslov"); 
+		String naslov = request.getParameter("naslov");
 		String autor = request.getParameter("autor");
 		String oblast = request.getParameter("oblast");
 		String opis = request.getParameter("opis");
-		String best = request.getParameter("bestseller");
-		boolean bestseller = false;
-		if(best == "true"){
-			bestseller = true;
-			String file = request.getParameter("slika");
-			byte[] img = extractBytes(file);
-			//nije dobra provera pokusacu Exception da napravim, ali u svakom slucaju unosi slike u tom okviru.
-			if(img.length < 4147339){
-				Knjiga2 knjiga = new Knjiga2(autor, bestseller, naslov, oblast, opis, img, k);
-				if(rrm.unesiKnjigu(knjiga)){
-					String message = "Uspesan unos knjige!";
-					request.setAttribute("message", message);
-					request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
-				}
+		String bestseller = request.getParameter("bestseller");
+		String message = "";
+		String putanja = "";
+		putanja = request.getParameter("slika");
+		//Provera da li je slika uneta ili ne, ako je putanja do slike prazna onda nije uneta i unosimo knjigu bez nje.
+		//Napravili smo novi konstruktor bez slike.
+		if(putanja.equals("")){
+			//Provera da li je bestseller ili ne. 
+			if(bestseller.equals("true")){
+				Knjiga2 knj = new Knjiga2(autor, true, naslov, oblast, opis, k);
+				rrm.unesiKnjigu(knj);
+				message = "Uspesan unos knjige!";
+				request.setAttribute("message", message);
+				request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
 			}else{
-				String message = "Neuspesan unos knjige, zbog velicine slike, kompresujte sliku!";
+				Knjiga2 knj = new Knjiga2(autor, false, naslov, oblast, opis, k);
+				rrm.unesiKnjigu(knj);
+				message = "Uspesan unos knjige!";
 				request.setAttribute("message", message);
 				request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
 			}
 		}else{
-			String file = request.getParameter("slika");
-			byte[] img = extractBytes(file);
-			if(img.length < 4147339){
-				Knjiga2 knjiga = new Knjiga2(autor, bestseller, naslov, oblast, opis, img, k);
-				if(rrm.unesiKnjigu(knjiga)){
-					String message = "Uspesan unos knjige!";
-					request.setAttribute("message", message);
-					request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
-				}
+			if(bestseller.equals("true")){
+				byte[] img = extractBytes(putanja);
+				Knjiga2 knj = new Knjiga2(autor, true, naslov, oblast, opis, img, k);
+				rrm.unesiKnjigu(knj);
+				message = "Uspesan unos knjige!";
+				request.setAttribute("message", message);
+				request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
 			}else{
-				String message = "Neuspesan unos knjige, zbog velicine slike, kompresujte sliku!";
+				byte[] img = extractBytes(putanja);
+				Knjiga2 knj = new Knjiga2(autor, false, naslov, oblast, opis, img, k);
+				rrm.unesiKnjigu(knj);
+				message = "Uspešan unos knjige!";
 				request.setAttribute("message", message);
 				request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
 			}

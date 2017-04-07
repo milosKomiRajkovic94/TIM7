@@ -25,6 +25,15 @@ public class Knjiga2 implements Serializable {
 		this.korisnik = k;
 	}
 	
+	public Knjiga2(String autor,boolean bestseller,String naslov,String oblast,String opis,Korisnik k){
+		this.autor = autor;
+		this.bestseller = bestseller;
+		this.naslov = naslov;
+		this.oblast = oblast;
+		this.opis = opis;
+		this.korisnik = k;
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idknjiga;
