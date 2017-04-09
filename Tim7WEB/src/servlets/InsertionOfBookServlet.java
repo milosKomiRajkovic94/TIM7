@@ -57,10 +57,7 @@ public class InsertionOfBookServlet extends HttpServlet {
 		String message = "";
 		String putanja = "";
 		putanja = request.getParameter("slika");
-		//Provera da li je slika uneta ili ne, ako je putanja do slike prazna onda nije uneta i unosimo knjigu bez nje.
-		//Napravili smo novi konstruktor bez slike.
 		if(putanja.equals("")){
-			//Provera da li je bestseller ili ne. 
 			if(bestseller.equals("true")){
 				Knjiga2 knj = new Knjiga2(autor, true, naslov, oblast, opis, k);
 				rrm.unesiKnjigu(knj);
@@ -77,18 +74,31 @@ public class InsertionOfBookServlet extends HttpServlet {
 		}else{
 			if(bestseller.equals("true")){
 				byte[] img = extractBytes(putanja);
-				Knjiga2 knj = new Knjiga2(autor, true, naslov, oblast, opis, img, k);
-				rrm.unesiKnjigu(knj);
-				message = "Uspesan unos knjige!";
-				request.setAttribute("message", message);
-				request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
+				if(img.length < 1048576){
+					Knjiga2 knj = new Knjiga2(autor, true, naslov, oblast, opis, img, k);
+					rrm.unesiKnjigu(knj);
+					message = "Uspesan unos knjige!";
+					request.setAttribute("message", message);
+					request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
+				}else{
+					message = "Neuspesan unos knjige, prevelika velicina slike!";
+					request.setAttribute("message", message);
+					request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
+				}
+				
 			}else{
 				byte[] img = extractBytes(putanja);
-				Knjiga2 knj = new Knjiga2(autor, false, naslov, oblast, opis, img, k);
-				rrm.unesiKnjigu(knj);
-				message = "Uspešan unos knjige!";
-				request.setAttribute("message", message);
-				request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
+				if(img.length < 1048576){
+					Knjiga2 knj = new Knjiga2(autor, false, naslov, oblast, opis, img, k);
+					rrm.unesiKnjigu(knj);
+					message = "Uspesan unos knjige!";
+					request.setAttribute("message", message);
+					request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
+				}else{
+					message = "Neuspesan unos knjige, prevelika velicina slike!";
+					request.setAttribute("message", message);
+					request.getRequestDispatcher("insertionOfBook.jsp").forward(request, response);
+				}
 			}
 		}
 	}
