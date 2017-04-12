@@ -46,6 +46,12 @@ public class SearchForBooksServlet extends HttpServlet {
 			request.setAttribute("listaKnjiga", listaKnjiga);
 			request.getRequestDispatcher("searchForBooks.jsp").forward(request, response);
 		}
+		
+		if(opcija.equals("2")){
+			listaKnjiga = rrm.vratiPoNaslovu(tekstKriterijuma);
+			request.setAttribute("listaKnjiga", listaKnjiga);
+			request.getRequestDispatcher("searchForBooks.jsp").forward(request, response);
+		}
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

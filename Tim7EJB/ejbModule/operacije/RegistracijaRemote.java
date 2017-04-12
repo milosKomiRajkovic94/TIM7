@@ -12,4 +12,5 @@ public interface RegistracijaRemote {
 	public boolean registracijaKorisnika(Korisnik k);
 	public boolean unesiKnjigu(Knjiga2 k);
 	public ArrayList<Knjiga2> vratiBestSellere();
+	public ArrayList<Knjiga2> vratiPoNaslovu(String tekstKriterijuma);
 }
