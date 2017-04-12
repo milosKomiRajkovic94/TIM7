@@ -1,9 +1,12 @@
 package operacije;
 
+import java.util.ArrayList;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import model.Knjiga2;
 import model.Korisnik;
@@ -37,5 +40,15 @@ public class Registracija implements RegistracijaRemote {
 		// TODO Auto-generated method stub
 		em.persist(k);
 		return true;
+	}
+
+
+	@Override
+	public ArrayList<Knjiga2> vratiBestSellere() {
+		// TODO Auto-generated method stub
+		boolean upit = true;
+		TypedQuery<Knjiga2> query = em.createQuery("SELECT knjiga FROM Knjiga2 knjiga WHERE knjiga.bestseller = :upit", Knjiga2.class);
+		query.setParameter("upit", upit);
+		return (ArrayList<Knjiga2>) query.getResultList();
 	}
 }

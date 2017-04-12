@@ -15,7 +15,16 @@ import java.util.List;
 public class Knjiga2 implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	public Knjiga2(String autor,boolean bestseller,String naslov,String oblast,String opis,byte[] img,Korisnik k){
+	public Knjiga2(String autor, boolean bestseller, String naslov, String oblast, String opis, Korisnik k){
+		this.autor = autor;
+		this.bestseller = bestseller;
+		this.naslov = naslov;
+		this.oblast = oblast;
+		this.opis = opis;
+		this.korisnik = k;
+	}
+	
+	public Knjiga2(String autor, boolean bestseller, String naslov, String oblast, String opis, byte[] img, Korisnik k){
 		this.autor = autor;
 		this.bestseller = bestseller;
 		this.naslov = naslov;
@@ -24,16 +33,6 @@ public class Knjiga2 implements Serializable {
 		this.slika = img;
 		this.korisnik = k;
 	}
-	
-	public Knjiga2(String autor,boolean bestseller,String naslov,String oblast,String opis,Korisnik k){
-		this.autor = autor;
-		this.bestseller = bestseller;
-		this.naslov = naslov;
-		this.oblast = oblast;
-		this.opis = opis;
-		this.korisnik = k;
-	}
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idknjiga;
@@ -55,11 +54,6 @@ public class Knjiga2 implements Serializable {
 	@OneToMany(mappedBy="knjiga2")
 	private List<DodatniPodaci> dodatniPodacis;
 
-	//bi-directional many-to-one association to Korisnik
-	@ManyToOne
-	@JoinColumn(name="IDKORISNIKA")
-	private Korisnik korisnik;
-
 	//bi-directional many-to-many association to Administrator
 	@ManyToMany
 	@JoinTable(
@@ -72,6 +66,15 @@ public class Knjiga2 implements Serializable {
 			}
 		)
 	private List<Administrator> administrators;
+
+	//bi-directional many-to-one association to Korisnik
+	@ManyToOne
+	@JoinColumn(name="IDKORISNIKA")
+	private Korisnik korisnik;
+
+	//bi-directional many-to-one association to Utiscioknjizi
+	@OneToMany(mappedBy="knjiga2")
+	private List<Utiscioknjizi> utiscioknjizis;
 
 	public Knjiga2() {
 	}
@@ -154,6 +157,14 @@ public class Knjiga2 implements Serializable {
 		return dodatniPodaci;
 	}
 
+	public List<Administrator> getAdministrators() {
+		return this.administrators;
+	}
+
+	public void setAdministrators(List<Administrator> administrators) {
+		this.administrators = administrators;
+	}
+
 	public Korisnik getKorisnik() {
 		return this.korisnik;
 	}
@@ -162,12 +173,26 @@ public class Knjiga2 implements Serializable {
 		this.korisnik = korisnik;
 	}
 
-	public List<Administrator> getAdministrators() {
-		return this.administrators;
+	public List<Utiscioknjizi> getUtiscioknjizis() {
+		return this.utiscioknjizis;
 	}
 
-	public void setAdministrators(List<Administrator> administrators) {
-		this.administrators = administrators;
+	public void setUtiscioknjizis(List<Utiscioknjizi> utiscioknjizis) {
+		this.utiscioknjizis = utiscioknjizis;
+	}
+
+	public Utiscioknjizi addUtiscioknjizi(Utiscioknjizi utiscioknjizi) {
+		getUtiscioknjizis().add(utiscioknjizi);
+		utiscioknjizi.setKnjiga2(this);
+
+		return utiscioknjizi;
+	}
+
+	public Utiscioknjizi removeUtiscioknjizi(Utiscioknjizi utiscioknjizi) {
+		getUtiscioknjizis().remove(utiscioknjizi);
+		utiscioknjizi.setKnjiga2(null);
+
+		return utiscioknjizi;
 	}
 
 }

@@ -16,13 +16,13 @@ import java.util.List;
 public class Korisnik implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	public Korisnik(Date datum, String ime, String prezime, String email, String password, String mesto){
+	public Korisnik(Date datum, String email, String ime, String mesto, String password, String prezime){
 		this.datumRodjenja = datum;
-		this.ime = ime;
-		this.prezime = prezime;
 		this.email = email;
-		this.password = password;
+		this.ime = ime;
 		this.mesto = mesto;
+		this.password = password;
+		this.prezime = prezime;
 	}
 	
 	@Id

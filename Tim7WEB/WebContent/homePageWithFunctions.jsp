@@ -24,6 +24,12 @@ body {font-family: "Raleway", Arial, sans-serif}
 			<form action="insertionOfBook.jsp">
 				<button type="submit">Unos knjige</button>
 			</form>
+			
+			<br>
+			
+			<form action="searchForBooks.jsp">
+				<button type="submit">Pretraga knjiga</button>
+			</form>
 	</center>
 	
 	<form action="LogOutServlet" method="post">
