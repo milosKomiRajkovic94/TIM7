@@ -41,6 +41,11 @@ public class SearchForBooksServlet extends HttpServlet {
 		listaKnjiga = new ArrayList<Knjiga2>();
 		String opcija = request.getParameter("izbor");
 		String tekstKriterijuma = request.getParameter("kriterijum");
+		if(opcija.equals("0")){
+			listaKnjiga = rrm.vratiPoAutoru(tekstKriterijuma);
+			request.setAttribute("listaKnjiga", listaKnjiga);
+			request.getRequestDispatcher("searchForBooks.jsp").forward(request, response);
+		}
 		if(opcija.equals("1")){
 			listaKnjiga = rrm.vratiBestSellere();
 			request.setAttribute("listaKnjiga", listaKnjiga);
