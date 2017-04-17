@@ -67,4 +67,13 @@ public class Registracija implements RegistracijaRemote {
 		query.setParameter("autor", tekstKriterijuma);
 		return (ArrayList<Knjiga2>) query.getResultList();
 	}
+
+
+	@Override
+	public Knjiga2 vratiKnjiguPoIDu(int idknjige) {
+		// TODO Auto-generated method stub
+		TypedQuery<Knjiga2> query = em.createQuery("SELECT k FROM Knjiga2 k where k.idknjiga =:id", Knjiga2.class);
+		query.setParameter("id", idknjige);
+		return query.getSingleResult();
+	}
 }

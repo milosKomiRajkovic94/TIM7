@@ -14,4 +14,5 @@ public interface RegistracijaRemote {
 	public ArrayList<Knjiga2> vratiBestSellere();
 	public ArrayList<Knjiga2> vratiPoNaslovu(String tekstKriterijuma);
 	public ArrayList<Knjiga2> vratiPoAutoru(String tekstKriterijuma);
+	public Knjiga2 vratiKnjiguPoIDu(int idknjige);
 }

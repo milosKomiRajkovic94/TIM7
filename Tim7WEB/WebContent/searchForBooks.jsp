@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -36,7 +38,8 @@ body {font-family: "Raleway", Arial, sans-serif}
    		<tr>
         	<th> Rezultati pretrage knjiga po izabranom kriterijumu </th>
     	</tr>
-    	<tr>
+    	<tr>	
+			<td> ID </td>
    		 	<td> NASLOV </td>
    		 	<td> AUTOR </td>
    		 	<td> OBLAST </td>
@@ -44,19 +47,24 @@ body {font-family: "Raleway", Arial, sans-serif}
    		 	<td> BESTSELLER? </td>
    		 	<td> SLIKA </td>
    		 <tr>
-   		 <c:forEach items="${listaKnjiga}" var="knjiga" varStatus="status">
+   		 <c:forEach items="${listaKnjiga}" varStatus="i">
+   		 	<c:set var="idknjiga" value="${listaKnjiga[i.index].idknjiga}"/>
         	<tr>
-            	<td>${knjiga.naslov}</td>
-            	<td>${knjiga.autor}</td>
-            	<td>${knjiga.oblast} </td>
-            	<td>${knjiga.opis} </td>
-            	<td>${knjiga.bestseller}</td>
+        		<td>
+        			<form action="/Tim7WEB/ServletZaPrelazakNaStranicu" method="post">
+        				<input type="submit" value="${idknjiga}" name="idknjiga">
+        			</form>
+        		 </td>
+            	<td>${listaKnjiga[i.index].naslov}</td>
+            	<td>${listaKnjiga[i.index].autor}</td>
+            	<td>${listaKnjiga[i.index].oblast} </td>
+            	<td>${listaKnjiga[i.index].opis} </td>
+            	<td>${listaKnjiga[i.index].bestseller}</td>
             	<td>
-            	<form action="/Tim7WEB/SearchForBooksServletPicture" method="get">
-            		<img src="${pageContext.servletContext.contextPath }/Tim7WEB/SearchForBooksServletPicture?id=${knjiga.idknjiga}"  HEIGHT="20" WIDTH="20" BORDER="0"/>
-            	</form> 
-            	</td>
-            		  
+            		<form action="/Tim7WEB/SearchForBooksServletPicture" method="get">
+            			<img src="${pageContext.servletContext.contextPath }/Tim7WEB/SearchForBooksServletPicture?id=${idknjiga}"  HEIGHT="20" WIDTH="20" BORDER="0"/>
+            		</form> 
+            	</td>  
        		</tr>
    		 </c:forEach>
 	</table>
