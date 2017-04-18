@@ -33,7 +33,7 @@ body {font-family: "Raleway", Arial, sans-serif}
 	</center>
 	
 	<form action="LogOutServlet" method="post">
-		<input type="submit" value="Odjavi se"> 
-</form>
+		<input type="submit" value="Logout"> 
+	</form>
 </body>
 </html>

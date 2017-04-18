@@ -1,6 +1,10 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import javax.ejb.EJB;
@@ -19,11 +23,9 @@ import operacije.RegistracijaRemote;
 @WebServlet("/SearchForBooksServlet")
 public class SearchForBooksServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	public ArrayList<Knjiga2> listaKnjiga;
+    public ArrayList<Knjiga2> listaKnjiga;
     @EJB
     public RegistracijaRemote rrm;
-       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -35,7 +37,7 @@ public class SearchForBooksServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		listaKnjiga = new ArrayList<Knjiga2>();
@@ -45,25 +47,22 @@ public class SearchForBooksServlet extends HttpServlet {
 			listaKnjiga = rrm.vratiPoAutoru(tekstKriterijuma);
 			request.setAttribute("listaKnjiga", listaKnjiga);
 			request.getRequestDispatcher("searchForBooks.jsp").forward(request, response);
-		}
-		if(opcija.equals("1")){
+		}else if(opcija.equals("1")){
 			listaKnjiga = rrm.vratiBestSellere();
 			request.setAttribute("listaKnjiga", listaKnjiga);
 			request.getRequestDispatcher("searchForBooks.jsp").forward(request, response);
-		}
-		
-		if(opcija.equals("2")){
+		}else if(opcija.equals("2")){
 			listaKnjiga = rrm.vratiPoNaslovu(tekstKriterijuma);
 			request.setAttribute("listaKnjiga", listaKnjiga);
 			request.getRequestDispatcher("searchForBooks.jsp").forward(request, response);
 		}
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

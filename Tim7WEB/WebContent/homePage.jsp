@@ -1,11 +1,10 @@
- <?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title> Pocetna stranica </title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -14,6 +13,7 @@
 body {font-family: "Raleway", Arial, sans-serif}
 .w3-row img {margin-bottom: -8px}
 </style>
+<title> Pocetna stranica </title>
 </head>
 <body>
 	<h3> Dobrodosli na nasu pocetnu stranicu!</h3>

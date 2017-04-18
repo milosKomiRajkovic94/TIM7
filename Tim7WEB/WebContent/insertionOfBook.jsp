@@ -39,14 +39,11 @@ body {font-family: "Raleway", Arial, sans-serif}
 			<tr>
 				<td>Da li je bestseller? </td>
 				<td>
-				<div class ="radio">
-				<input name="bestseller" type="radio" value="true"> <b> Da </b> </div> </td>
-				<td>
-				<div class ="radio">
-				<input name="bestseller" type="radio" value="false" checked><b> Ne </b></div></td>
+				<input type="radio" name="bestseller" value="true"> <b> Da </b> 
+				<input type="radio" name="bestseller" value="false"checked> <b>Ne</b></td>
 			</tr>
 			<tr>
-				<td>Izaberite sliku sa racunara ako zelite (do 4147339 bajtova)  </td>
+				<td>Izaberite sliku sa racunara ako zelite (do 1048576 bajtova)  </td>
 				<td><input name="slika" type="file" accept=".jpg, .jpeg, .png" value="Odaberite sliku"></td>
 			</tr>
 			<tr>

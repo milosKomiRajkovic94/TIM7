@@ -1,10 +1,13 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,26 +35,48 @@ public class SearchForBooksServletPicture extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	    final String DB_URL = "jdbc:mysql://nastava.is.pmf.uns.ac.rs:3306/pris";
-	    final String User = "pris";
-	    final String Password = "pris";
-	    try {
-	        Class.forName(JDBC_DRIVER);
-	        Connection conn = DriverManager.getConnection(DB_URL, User, Password);
+		Blob image = null;
+		Connection con = null;
+		byte[ ] imgData = null ;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection("jdbc:mysql://nastava.is.pmf.uns.ac.rs:3306/pris","pris","pris");
+			stmt = con.prepareStatement("SELECT SLIKA FROM KNJIGA2 WHERE IDKNJIGA=?");
+	        stmt.setLong(1, Long.valueOf(request.getParameter("idknjiga")));
+			rs = stmt.executeQuery();
 
-	        PreparedStatement stmt = conn.prepareStatement("select SLIKA from KNJIGA2 where IDKNJIGA=?");
-	        stmt.setLong(1, Long.valueOf(request.getParameter("id")));
-	        ResultSet rs = stmt.executeQuery();
-	        if (rs.next()) {
-	            response.setContentType("image/gif");
-	            response.getOutputStream().write(rs.getBytes("SLIKA"));
-	            request.getRequestDispatcher("searchForBooks.jsp").forward(request, response);
-	        }
-	        conn.close();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+			if (rs.next()) {
+					image = rs.getBlob(1);
+					imgData = image.getBytes(1,(int)image.length());
+
+			} else {
+				System.out.println("Display Blob Example");
+				System.out.println("image not found for given id>");
+				return;
+			}
+
+			// display the image
+			response.setContentType("image/gif");
+			OutputStream o = response.getOutputStream();
+			o.write(imgData);
+            request.getRequestDispatcher("searchForBooks.jsp").forward(request, response);
+			o.flush();
+			o.close();
+		} catch (Exception e) {
+			System.out.println("Unable To Display image");
+			System.out.println("Image Display Error=" + e.getMessage());
+			return;
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/**

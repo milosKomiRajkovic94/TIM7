@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -17,7 +16,7 @@ import model.Korisnik;
 @Stateful
 @LocalBean
 public class LogIn implements LogInRemote {
-	private Korisnik ulogovaniKorisnik;
+private Korisnik ulogovaniKorisnik;
 	
 	@PersistenceContext
 	EntityManager em;
@@ -43,5 +42,4 @@ public class LogIn implements LogInRemote {
 			return  null;
 		}
 	}
-
 }

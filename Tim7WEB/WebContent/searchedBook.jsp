@@ -9,7 +9,6 @@
 <title>Trazena knjiga</title>
 </head>
 <body>
-
 	<h2> Detalji o odabranoj knjizi su: </h2>
 	<table>
 		<tr>
@@ -77,16 +76,6 @@
 	<td>
 	<form action="searchForBooks.jsp">
 				<button type="submit"><- Povratak na pretragu knjiga!</button>
-	</form>
-	</td>
-	</tr>
-	</table>
-
-	<table>
-	<tr>
-	<td>
-	<form action="homePageWithFunctions.jsp">
-				<button type="submit"><- Povratak na pocetnu stranicu sa funkcijama!</button>
 	</form>
 	<form action="LogOutServlet" method="post">
 		<input type="submit" value="Odjavi se"> 

@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Korisnik;
-import operacije.Registracija;
 import operacije.RegistracijaRemote;
 
 /**

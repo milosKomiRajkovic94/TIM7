@@ -32,7 +32,7 @@ body {font-family: "Raleway", Arial, sans-serif}
 				<td><input name="mesto" type="text"></input></td>
 			</tr>
 			<tr>
-				<td>Datum rodjenja  (yyyy-mm-dd): </td>
+				<td>Datum rodjenja: </td>
 				<td><input name="datumRodjenja" type="text"></input></td>
 			</tr>
 			<tr>
@@ -52,6 +52,9 @@ body {font-family: "Raleway", Arial, sans-serif}
 	<c:if test="${message == 'Uspesno!'}">
 		<p>${message}</p>
 		<a href="homePage.jsp"><b> Probajte se ulogovati! </b></a>
+	</c:if>
+	<c:if test="${message != 'Uspesno!' }">
+		<a href="Tim7WEB/homePage.jsp"> <b> Povratak na pocetnu stranicu. </b></a>
 	</c:if>
 </body>
 </html>
