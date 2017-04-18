@@ -40,6 +40,47 @@
 	</table>
 	
 	<br>
+	
+	<h2> Unesite svoj utisak o knjizi: </h2>
+	
+	<form action="/Tim7WEB/UnosUtiskaServlet" method="post">
+		<table>
+			<tr>
+				<td> <input type="text" name="utisak" size="35"> </td>
+			</tr>
+			<tr>
+				<td> <input type="submit" value="Unos utiska"> </td>
+			</tr>
+		</table>
+	</form>
+	
+	${message} 
+	
+	<br>
+	
+	<form action="/Tim7WEB/VratiUtiskeServlet" method="post">
+		<input type="submit" value="Prikazi sve utiske!" name="button">
+	</form>
+	
+	<table border="1">
+		<c:forEach items="${listaUtisaka}" var="utisak">
+			<tr>
+				<td> ${utisak.utisak} </td>
+			</tr>
+		</c:forEach>
+	</table>
+	
+	<br>
+	
+	<table>
+	<tr>
+	<td>
+	<form action="searchForBooks.jsp">
+				<button type="submit"><- Povratak na pretragu knjiga!</button>
+	</form>
+	</td>
+	</tr>
+	</table>
 
 	<table>
 	<tr>
