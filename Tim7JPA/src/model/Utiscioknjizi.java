@@ -27,6 +27,12 @@ public class Utiscioknjizi implements Serializable {
 	public Utiscioknjizi() {
 	}
 
+	public Utiscioknjizi(String utisak, Knjiga2 knjiga2) {
+		super();
+		this.utisak = utisak;
+		this.knjiga2 = knjiga2;
+	}
+
 	public int getIdutiska() {
 		return this.idutiska;
 	}

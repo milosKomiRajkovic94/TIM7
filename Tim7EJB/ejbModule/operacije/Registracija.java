@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 
 import model.Knjiga2;
 import model.Korisnik;
+import model.Utiscioknjizi;
 
 /**
  * Session Bean implementation class Registracija
@@ -75,5 +76,21 @@ public class Registracija implements RegistracijaRemote {
 		TypedQuery<Knjiga2> query = em.createQuery("SELECT k FROM Knjiga2 k where k.idknjiga =:id", Knjiga2.class);
 		query.setParameter("id", idknjige);
 		return query.getSingleResult();
+	}
+	
+	@Override
+	public ArrayList<Utiscioknjizi> vratiUtiske(Knjiga2 k) {
+		// TODO Auto-generated method stub
+		TypedQuery<Utiscioknjizi> query = em.createQuery("SELECT utisak FROM Utiscioknjizi utisak WHERE utisak.knjiga2 =:k", Utiscioknjizi.class);
+		query.setParameter("k", k);
+		return (ArrayList<Utiscioknjizi>) query.getResultList();
+	}
+	
+	@Override
+	public boolean unesiUtisak(String utisak, Knjiga2 k) {
+		// TODO Auto-generated method stub
+		Utiscioknjizi u = new Utiscioknjizi(utisak, k);
+		em.persist(u);
+		return true;
 	}
 }
