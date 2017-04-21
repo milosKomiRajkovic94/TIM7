@@ -19,7 +19,10 @@ body {font-family: "Raleway", Arial, sans-serif}
 	<form action="/Tim7WEB/InsertionOfBookServlet" method="post"> 
 		<h2> Unesite podatke o knjizi korsnice ${k.ime} ${k.prezime}: </h2>
 		
+		
+		
 		<table>
+			
 			<tr>
 				<td>Naslov: </td>
 				<td><input name="naslov" type="text"></input></td>
@@ -66,6 +69,10 @@ body {font-family: "Raleway", Arial, sans-serif}
 	</td>
 	</tr>
 	</table>
+	
+	<center>
+		<img src="images/slika2.jpg" height="400" />
+	</center>
 	
 </body>
 </html>

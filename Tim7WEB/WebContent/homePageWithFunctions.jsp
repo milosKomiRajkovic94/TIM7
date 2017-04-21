@@ -35,5 +35,10 @@ body {font-family: "Raleway", Arial, sans-serif}
 	<form action="LogOutServlet" method="post">
 		<input type="submit" value="Logout"> 
 	</form>
+	
+	<center>
+		<img src="images/slika3.png" BORDER="1"/>
+	</center>
+	
 </body>
 </html>

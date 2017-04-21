@@ -16,7 +16,10 @@ body {font-family: "Raleway", Arial, sans-serif}
 <title> Pocetna stranica </title>
 </head>
 <body>
-	<h3> Dobrodosli na nasu pocetnu stranicu!</h3>
+
+	<center>
+	<h3> Dobrodosli na nasu pocetnu stranicu ljubitelja knjiga!</h3>
+	</center>
 	
 	<br>
 	<br>
@@ -42,5 +45,10 @@ body {font-family: "Raleway", Arial, sans-serif}
 			</table>
 			<p>${message} </p>
 	</form>
+	
+	<center>
+		<img src="images/slika1.jpg" BORDER="1"/>
+	</center>
+	            	
 </body>
 </html>
