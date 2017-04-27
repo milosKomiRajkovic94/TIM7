@@ -8,7 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import model.Forum;
 import model.Knjiga2;
+import model.Komentar;
 import model.Korisnik;
 import model.Utiscioknjizi;
 
@@ -95,5 +97,44 @@ public class Registracija implements RegistracijaRemote {
 		TypedQuery<Utiscioknjizi> query = em.createQuery("SELECT utisak FROM Utiscioknjizi utisak WHERE utisak.knjiga2 =:k", Utiscioknjizi.class);
 		query.setParameter("k", k);
 		return (ArrayList<Utiscioknjizi>) query.getResultList();
+	}
+
+	@Override
+	public boolean unosForuma(String naziv, Korisnik k) {
+		// TODO Auto-generated method stub
+		Forum f = new Forum(naziv, k);
+		em.persist(f);
+		return true;
+	}
+
+	@Override
+	public ArrayList<Forum> vratiForume() {
+		// TODO Auto-generated method stub
+		TypedQuery<Forum> query = em.createQuery("SELECT forum FROM Forum forum", Forum.class);
+		return (ArrayList<Forum>) query.getResultList();
+	}
+
+	@Override
+	public Forum vratiForumPoIDu(int idforuma) {
+		// TODO Auto-generated method stub
+		TypedQuery<Forum> query = em.createQuery("SELECT forum FROM Forum forum WHERE forum.idforuma = :idforuma", Forum.class);
+		query.setParameter("idforuma", idforuma);
+		return query.getSingleResult();
+	}
+
+	@Override
+	public boolean unosObjave(String objava, Forum f) {
+		// TODO Auto-generated method stub
+		Komentar komentar = new Komentar(objava, f);
+		em.persist(komentar);
+		return true;
+	}
+
+	@Override
+	public ArrayList<Komentar> vratKomentare(Forum forum) {
+		// TODO Auto-generated method stub
+		TypedQuery<Komentar> query = em.createQuery("SELECT k FROM Komentar k WHERE k.forum = :forum", Komentar.class);
+		query.setParameter("forum", forum);
+		return (ArrayList<Komentar>) query.getResultList();
 	}
 }

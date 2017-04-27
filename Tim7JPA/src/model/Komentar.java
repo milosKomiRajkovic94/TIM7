@@ -9,10 +9,16 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@Table(name="KOMENTAR")
 @NamedQuery(name="Komentar.findAll", query="SELECT k FROM Komentar k")
 public class Komentar implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	public Komentar(String objava, Forum forum){
+		this.objava = objava;
+		this.forum = forum;
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idkomentara;
