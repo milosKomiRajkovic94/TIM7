@@ -30,6 +30,12 @@ body {font-family: "Raleway", Arial, sans-serif}
 			<form action="searchForBooks.jsp">
 				<button type="submit">Pretraga knjiga</button>
 			</form>
+			
+			<br>
+			
+			<form action="bookReaders.jsp">
+				<button type="submit"> Teme </button>
+			</form>
 	</center>
 	
 	<form action="LogOutServlet" method="post">
