@@ -1,9 +1,11 @@
 package operacije;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.Remote;
 
+import model.DodatniPodaci;
 import model.Forum;
 import model.Knjiga2;
 import model.Komentar;
@@ -25,4 +27,6 @@ public interface RegistracijaRemote {
 	public Forum vratiForumPoIDu(int idforuma);
 	public boolean unosObjave(String objava, Forum f);
 	public ArrayList<Komentar> vratKomentare(Forum forum);
+	public boolean unosDodatnogPodatka(float cena, String lokacija, Knjiga2 knjiga);
+	public List<DodatniPodaci> vratiSveDP();
 }

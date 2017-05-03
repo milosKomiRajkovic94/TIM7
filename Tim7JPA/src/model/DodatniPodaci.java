@@ -61,5 +61,11 @@ public class DodatniPodaci implements Serializable {
 	public void setKnjiga2(Knjiga2 knjiga2) {
 		this.knjiga2 = knjiga2;
 	}
+	
+	public DodatniPodaci(float cena, String lokacija, Knjiga2 knjiga){
+		this.cena = cena;
+		this.lokacija = lokacija;
+		this.knjiga2 = knjiga;
+	}
 
 }

@@ -1,6 +1,7 @@
 package operacije;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -8,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import model.DodatniPodaci;
 import model.Forum;
 import model.Knjiga2;
 import model.Komentar;
@@ -136,5 +138,20 @@ public class Registracija implements RegistracijaRemote {
 		TypedQuery<Komentar> query = em.createQuery("SELECT k FROM Komentar k WHERE k.forum = :forum", Komentar.class);
 		query.setParameter("forum", forum);
 		return (ArrayList<Komentar>) query.getResultList();
+	}
+	
+	@Override
+	public boolean unosDodatnogPodatka(float cena, String lokacija, Knjiga2 knjiga) {
+		// TODO Auto-generated method stub
+		DodatniPodaci dp = new DodatniPodaci(cena, lokacija, knjiga);
+		em.persist(dp);
+		return true;
+	}
+
+	@Override
+	public List<DodatniPodaci> vratiSveDP() {
+		// TODO Auto-generated method stub
+		TypedQuery<DodatniPodaci> query = em.createQuery("SELECT dp FROM DodatniPodaci dp", DodatniPodaci.class);
+		return query.getResultList();
 	}
 }
