@@ -9,79 +9,116 @@
 <title>Trazena knjiga</title>
 </head>
 <body>
-	<h2> Detalji o odabranoj knjizi su: </h2>
+	<h2>Detalji o odabranoj knjizi su:</h2>
 	<table>
 		<tr>
-			<td> Naslov knjige: </td>
-			<td> ${knj.naslov} </td>
+			<td>Naslov knjige:</td>
+			<td>${knj.naslov}</td>
 		</tr>
 		<tr>
-			<td> Autor knjige: </td>
-			<td> ${knj.autor} </td>
+			<td>Autor knjige:</td>
+			<td>${knj.autor}</td>
 		</tr>
 		<tr>
-			<td> Oblast knjige: </td>
-			<td> ${knj.oblast} </td>
+			<td>Oblast knjige:</td>
+			<td>${knj.oblast}</td>
 		</tr>
 		<tr>
-			<td> Opis: </td>
-			<td> ${knj.opis} </td>
+			<td>Opis:</td>
+			<td>${knj.opis}</td>
 		</tr>
 		<tr>
-			<td> Bestseller: </td>
-			<td> ${knj.bestseller} </td>
+			<td>Bestseller:</td>
+			<td>${knj.bestseller}</td>
 		</tr>
 		<tr>
-			<td>
-            	<img src="${pageContext.servletContext.contextPath }/Tim7WEB/SearchForBooksServletPicture?id=${knj.idknjiga}"  HEIGHT="20" WIDTH="20" BORDER="0"/>
-            </td> 
-        </tr> 
+			<td><img
+				src="${pageContext.servletContext.contextPath }/Tim7WEB/SearchForBooksServletPicture?id=${knj.idknjiga}"
+				HEIGHT="20" WIDTH="20" BORDER="0" /></td>
+		</tr>
 	</table>
-	
+
 	<br>
-	
-	<h2> Unesite svoj utisak o knjizi: </h2>
-	
-	<form action="/Tim7WEB/UnosUtiskaServlet" method="post">
+	<h2>Unesite dodatne podatke o knjizi:</h2>
+
+	<form action="/Tim7WEB/UnosDodatnihPodatakaServlet" method="post">
 		<table>
 			<tr>
-				<td> <input type="text" name="utisak" size="35"> </td>
+				<td>Cena:</td>
+				<td><input type="text" name="cena"></td>
+				<td>RSD</td>
 			</tr>
 			<tr>
-				<td> <input type="submit" value="Unos utiska"> </td>
+				<td>Mesto gde se moze kupiti po toj ceni:</td>
+				<td><input type="text" name="mesto"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Unos dodatnih podataka">
 			</tr>
 		</table>
 	</form>
-	
-	${message} 
-	
+
+	${messageTwo}
+
 	<br>
-	
-	<form action="/Tim7WEB/VratiUtiskeServlet" method="post">
-		<input type="submit" value="Prikazi sve utiske!" name="button">
+	<form action="/Tim7WEB/VratiSveDodatneInformacijeServlet" method="post">
+		<input type="submit" value="Vrati sve dodatne informacije o knjizi">
 	</form>
-	
+
+	<br>
 	<table border="1">
-		<c:forEach items="${listaUtisaka}" var="utisak">
+		<tr>
+			<td>CENA:</td>
+			<td>MESTO:</td>
+		</tr>
+		<c:forEach items="${listaDodatnihInformacija}" var="info">
 			<tr>
-				<td> ${utisak.utisak} </td>
+				<td>${info.cena}</td>
+				<td>${info.lokacija}</td>
 			</tr>
 		</c:forEach>
 	</table>
-	
+
+	<h2>Unesite svoj utisak o knjizi:</h2>
+
+	<form action="/Tim7WEB/UnosUtiskaServlet" method="post">
+		<table>
+			<tr>
+				<td><input type="text" name="utisak" size="35"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Unos utiska"></td>
+			</tr>
+		</table>
+	</form>
+
+	${message}
+
 	<br>
-	
+	<form action="/Tim7WEB/VratiUtiskeServlet" method="post">
+		<input type="submit" value="Prikazi sve utiske!" name="button">
+	</form>
+
+	<table border="1">
+		<c:forEach items="${listaUtisaka}" var="utisak">
+			<tr>
+				<td>${utisak.utisak}</td>
+			</tr>
+		</c:forEach>
+	</table>
+
+	<br>
 	<table>
-	<tr>
-	<td>
-	<form action="searchForBooks.jsp">
-				<button type="submit"><- Povratak na pretragu knjiga!</button>
-	</form>
-	<form action="LogOutServlet" method="post">
-		<input type="submit" value="Odjavi se"> 
-	</form>
-	</td>
-	</tr>
+		<tr>
+			<td>
+				<form action="searchForBooks.jsp">
+					<button type="submit"><- Povratak na pretragu knjiga!</button>
+				</form>
+				<form action="LogOutServlet" method="post">
+					<input type="submit" value="Odjavi se">
+				</form>
+			</td>
+		</tr>
 	</table>
 </body>
 </html>
