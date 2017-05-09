@@ -103,6 +103,7 @@
 		<c:forEach items="${listaUtisaka}" var="utisak">
 			<tr>
 				<td>${utisak.utisak}</td>
+				<td> <img src="images/slika4.png" HEIGHT="100" BORDER="1"> </td>
 			</tr>
 		</c:forEach>
 	</table>
