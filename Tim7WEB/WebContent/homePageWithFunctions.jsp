@@ -36,6 +36,12 @@ body {font-family: "Raleway", Arial, sans-serif}
 			<form action="bookReaders.jsp">
 				<button type="submit"> Teme </button>
 			</form>
+			
+			<br>
+			
+			<form action="bookReadersClub.jsp">
+				<button type="submit"> Klub citalaca </button>
+			</form>
 	</center>
 	
 	<form action="LogOutServlet" method="post">
