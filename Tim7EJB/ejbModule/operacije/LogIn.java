@@ -53,7 +53,7 @@ private Korisnik ulogovaniKorisnik;
 		}
 	}
 	
-	@Schedule(year="*", month="*", dayOfMonth="1st", hour="*", minute="*", second="*", persistent=false)
+	@Schedule(year="*", month="*", dayOfMonth="1st",  persistent=false)
 	public void vratiKnjiguMeseca(){
 		TypedQuery<Knjiga2> q = em.createQuery("SELECT k FROM Knjiga2 k ORDER BY RAND() LIMIT 1", Knjiga2.class);
 		knjiga = q.getSingleResult();
