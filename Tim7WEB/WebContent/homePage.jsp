@@ -46,6 +46,18 @@ body {font-family: "Raleway", Arial, sans-serif}
 			<p>${message} </p>
 	</form>
 	
+	<br>
+	
+	<b> Kao neregistrovani korisnik imate mogucnost samo pretrage knjiga (sadrzaja) sajta </b>
+	
+	<br>
+	
+	<a href="searchingBookForUnregistedUsers.jsp"> <b> Pretrazite knjige </b></a>
+	
+	<br>
+	
+	<br>
+	
 	<center>
 		<img src="images/slika1.jpg" BORDER="1"/>
 	</center>
