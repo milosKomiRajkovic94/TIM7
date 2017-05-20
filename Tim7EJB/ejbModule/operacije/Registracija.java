@@ -9,11 +9,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import model.Administrator;
 import model.DodatniPodaci;
 import model.Forum;
 import model.Knjiga2;
 import model.Komentar;
 import model.Korisnik;
+import model.Sajmovi;
 import model.Utiscioknjizi;
 
 /**
@@ -153,5 +155,21 @@ public class Registracija implements RegistracijaRemote {
 		// TODO Auto-generated method stub
 		TypedQuery<DodatniPodaci> query = em.createQuery("SELECT dp FROM DodatniPodaci dp", DodatniPodaci.class);
 		return query.getResultList();
+	}
+
+	@Override
+	public boolean unesiSajam(Sajmovi s) {
+		// TODO Auto-generated method stub
+		em.persist(s);
+		return true;
+	}
+
+	@Override
+	public Administrator vratiAdministratora() {
+		// TODO Auto-generated method stub
+		TypedQuery<Administrator> query = em.createQuery("SELECT a FROM Administrator a WHERE a.email = :email AND a.password = :password", Administrator.class);
+		query.setParameter("email", "administrator@yahoo.com");
+		query.setParameter("password", "adiida");
+		return query.getSingleResult();
 	}
 }

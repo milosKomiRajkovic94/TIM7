@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import model.Administrator;
 import model.DodatniPodaci;
 import model.Forum;
 import model.Knjiga2;
 import model.Komentar;
 import model.Korisnik;
+import model.Sajmovi;
 import model.Utiscioknjizi;
 
 @Remote
@@ -29,4 +31,6 @@ public interface RegistracijaRemote {
 	public ArrayList<Komentar> vratKomentare(Forum forum);
 	public boolean unosDodatnogPodatka(float cena, String lokacija, Knjiga2 knjiga);
 	public List<DodatniPodaci> vratiSveDP();
+	public boolean unesiSajam(Sajmovi s);
+	public Administrator vratiAdministratora();
 }

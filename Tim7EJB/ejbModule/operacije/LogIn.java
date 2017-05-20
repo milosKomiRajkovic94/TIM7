@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import model.Administrator;
 import model.Knjiga2;
 import model.Korisnik;
 
@@ -26,6 +27,8 @@ private Korisnik ulogovaniKorisnik;
 	EntityManager em;
 	
 	public Knjiga2 knjiga;
+
+	private Administrator ulogovaniAdministrator;
     /**
      * Default constructor. 
      */
@@ -63,5 +66,22 @@ private Korisnik ulogovaniKorisnik;
 	public Knjiga2 vratiKnjigu() {
 		// TODO Auto-generated method stub
 		return knjiga;
+	}
+
+	@Override
+	public Administrator ulogujAdministratora(String email, String password) {
+		// TODO Auto-generated method stub
+		TypedQuery<Administrator> query = em.createQuery("SELECT a FROM Administrator a WHERE a.email = :email AND a.password = :password", Administrator.class);
+		query.setParameter("email", email);
+		query.setParameter("password", password);
+		List<Administrator> administratori = query.getResultList();
+		
+		if(administratori != null && !administratori.isEmpty()){
+			ulogovaniAdministrator = administratori.get(0);
+			return ulogovaniAdministrator;
+		}else{
+			ulogovaniAdministrator = null;
+			return  null;
+		}
 	}
 }
