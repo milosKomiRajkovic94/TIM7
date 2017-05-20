@@ -40,7 +40,8 @@ body {font-family: "Raleway", Arial, sans-serif}
 				</tr>
 				<tr>
 					<td><input type="submit" value="Ulogujte se!" name="button"/></td>
-					<td> <a href="/Tim7WEB/RegistracioniServlet"><b> Registrujte se prvo! </b> </a>		
+					<td> <a href="/Tim7WEB/RegistracioniServlet"><b> Registrujte se prvo! </b> </a>	
+					<td> <a href="logInAsAdministrator.jsp"> <b> Prijavite se kao administrator! </b></a>	
 				</tr>
 			</table>
 			<p>${message} </p>
@@ -56,7 +57,25 @@ body {font-family: "Raleway", Arial, sans-serif}
 	
 	<br>
 	
-	<br>
+	<form action="/Tim7WEB/PrikazZanimljivostiServlet" method="post">
+		<input type="submit" value="Prikazi zanimljivosti">
+	</form>
+	
+	<table border="1">
+		<tr>
+        		<th> Rezultati pretrage trenutnih zanimljivosti </th>
+    	</tr>
+    	<tr>	
+			<td> NASLOV </td>
+			<td> DATUM </td>
+   		 <tr>
+   		 <c:forEach items="${listaZanimljivosti}" varStatus="i">
+   		    <tr>
+   		    	<td> ${listaZanimljivosti[i.index].nazivSajma} </td>
+   		    	<td> ${listaZanimljivosti[i.index].datumSajma} </td>
+   		    </tr>
+   		  </c:forEach>
+	</table>
 	
 	<center>
 		<img src="images/slika1.jpg" BORDER="1"/>

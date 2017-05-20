@@ -172,4 +172,11 @@ public class Registracija implements RegistracijaRemote {
 		query.setParameter("password", "adiida");
 		return query.getSingleResult();
 	}
+
+	@Override
+	public ArrayList<Sajmovi> prikazZanimljivosti() {
+		// TODO Auto-generated method stub
+		TypedQuery<Sajmovi> query = em.createQuery("SELECT s FROM Sajmovi s", Sajmovi.class);
+		return (ArrayList<Sajmovi>) query.getResultList();
+	}
 }

@@ -33,4 +33,5 @@ public interface RegistracijaRemote {
 	public List<DodatniPodaci> vratiSveDP();
 	public boolean unesiSajam(Sajmovi s);
 	public Administrator vratiAdministratora();
+	public ArrayList<Sajmovi> prikazZanimljivosti();
 }
