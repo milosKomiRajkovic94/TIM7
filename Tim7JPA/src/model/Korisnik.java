@@ -25,7 +25,6 @@ public class Korisnik implements Serializable {
 		this.prezime = prezime;
 	}
 	
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idkorisnika;
@@ -44,13 +43,13 @@ public class Korisnik implements Serializable {
 
 	private String prezime;
 
-	//bi-directional many-to-one association to Knjiga2
-	@OneToMany(mappedBy="korisnik")
-	private List<Knjiga2> knjiga2s;
-
 	//bi-directional many-to-one association to Forum
 	@OneToMany(mappedBy="korisnik")
 	private List<Forum> forums;
+
+	//bi-directional many-to-one association to Knjiga2
+	@OneToMany(mappedBy="korisnik")
+	private List<Knjiga2> knjiga2s;
 
 	public Korisnik() {
 	}
@@ -111,28 +110,6 @@ public class Korisnik implements Serializable {
 		this.prezime = prezime;
 	}
 
-	public List<Knjiga2> getKnjiga2s() {
-		return this.knjiga2s;
-	}
-
-	public void setKnjiga2s(List<Knjiga2> knjiga2s) {
-		this.knjiga2s = knjiga2s;
-	}
-
-	public Knjiga2 addKnjiga2(Knjiga2 knjiga2) {
-		getKnjiga2s().add(knjiga2);
-		knjiga2.setKorisnik(this);
-
-		return knjiga2;
-	}
-
-	public Knjiga2 removeKnjiga2(Knjiga2 knjiga2) {
-		getKnjiga2s().remove(knjiga2);
-		knjiga2.setKorisnik(null);
-
-		return knjiga2;
-	}
-
 	public List<Forum> getForums() {
 		return this.forums;
 	}
@@ -153,6 +130,28 @@ public class Korisnik implements Serializable {
 		forum.setKorisnik(null);
 
 		return forum;
+	}
+
+	public List<Knjiga2> getKnjiga2s() {
+		return this.knjiga2s;
+	}
+
+	public void setKnjiga2s(List<Knjiga2> knjiga2s) {
+		this.knjiga2s = knjiga2s;
+	}
+
+	public Knjiga2 addKnjiga2(Knjiga2 knjiga2) {
+		getKnjiga2s().add(knjiga2);
+		knjiga2.setKorisnik(this);
+
+		return knjiga2;
+	}
+
+	public Knjiga2 removeKnjiga2(Knjiga2 knjiga2) {
+		getKnjiga2s().remove(knjiga2);
+		knjiga2.setKorisnik(null);
+
+		return knjiga2;
 	}
 
 }

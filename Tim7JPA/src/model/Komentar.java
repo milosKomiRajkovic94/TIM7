@@ -14,9 +14,9 @@ import javax.persistence.*;
 public class Komentar implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	public Komentar(String objava, Forum forum){
+	public Komentar(String objava, Forum f){
 		this.objava = objava;
-		this.forum = forum;
+		this.forum = f;
 	}
 	
 	@Id

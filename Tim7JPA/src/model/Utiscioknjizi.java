@@ -19,7 +19,6 @@ public class Utiscioknjizi implements Serializable {
 		this.knjiga2 = k;
 	}
 	
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idutiska;

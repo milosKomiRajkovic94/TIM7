@@ -14,7 +14,13 @@ import java.util.Date;
 @NamedQuery(name="Sajmovi.findAll", query="SELECT s FROM Sajmovi s")
 public class Sajmovi implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	public Sajmovi(String tekst, Date date, Administrator a){
+		this.nazivSajma = tekst;
+		this.datumSajma = date;
+		this.administrator = a;
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idsajma;
@@ -32,12 +38,6 @@ public class Sajmovi implements Serializable {
 	private Administrator administrator;
 
 	public Sajmovi() {
-	}
-	
-	public Sajmovi(String nazivSajma, Date datum, Administrator administrator){
-		this.nazivSajma = nazivSajma;
-		this.datumSajma = datum;
-		this.administrator = administrator;
 	}
 
 	public int getIdsajma() {

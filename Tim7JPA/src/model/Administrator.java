@@ -15,7 +15,16 @@ import java.util.List;
 @NamedQuery(name="Administrator.findAll", query="SELECT a FROM Administrator a")
 public class Administrator implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	public Administrator(String email, String ime, String mesto, String password, String prezime, Date datumrodjenja){
+		this.email = email;
+		this.ime = ime;
+		this.mesto = mesto;
+		this.password = password;
+		this.prezime = prezime;
+		this.datumrodjenja = datumrodjenja;
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idadministrator;

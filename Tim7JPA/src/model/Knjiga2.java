@@ -24,7 +24,6 @@ public class Knjiga2 implements Serializable {
 		this.korisnik = k;
 	}
 	
-	
 	public Knjiga2(String autor, boolean bestseller, String naslov, String oblast, String opis, byte[] img, Korisnik k){
 		this.autor = autor;
 		this.bestseller = bestseller;
@@ -46,6 +45,8 @@ public class Knjiga2 implements Serializable {
 	private String naslov;
 
 	private String oblast;
+
+	private int ocena;
 
 	private String opis;
 
@@ -119,6 +120,14 @@ public class Knjiga2 implements Serializable {
 
 	public void setOblast(String oblast) {
 		this.oblast = oblast;
+	}
+
+	public int getOcena() {
+		return this.ocena;
+	}
+
+	public void setOcena(int ocena) {
+		this.ocena = ocena;
 	}
 
 	public String getOpis() {

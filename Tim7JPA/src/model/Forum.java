@@ -14,16 +14,12 @@ import java.util.List;
 @NamedQuery(name="Forum.findAll", query="SELECT f FROM Forum f")
 public class Forum implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	public Forum(){
-		
-	}
-	
+
 	public Forum(String naziv, Korisnik k){
 		this.naziv = naziv;
 		this.korisnik = k;
 	}
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idforuma;
@@ -39,6 +35,8 @@ public class Forum implements Serializable {
 	@OneToMany(mappedBy="forum")
 	private List<Komentar> komentars;
 
+	public Forum() {
+	}
 
 	public int getIdforuma() {
 		return this.idforuma;

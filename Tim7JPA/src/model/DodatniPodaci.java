@@ -13,7 +13,13 @@ import javax.persistence.*;
 @NamedQuery(name="DodatniPodaci.findAll", query="SELECT d FROM DodatniPodaci d")
 public class DodatniPodaci implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	public DodatniPodaci(float cena, String lokacija, Knjiga2 knjiga){
+		this.cena = cena;
+		this.lokacija = lokacija;
+		this.knjiga2 = knjiga;
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int iddp;
@@ -60,12 +66,6 @@ public class DodatniPodaci implements Serializable {
 
 	public void setKnjiga2(Knjiga2 knjiga2) {
 		this.knjiga2 = knjiga2;
-	}
-	
-	public DodatniPodaci(float cena, String lokacija, Knjiga2 knjiga){
-		this.cena = cena;
-		this.lokacija = lokacija;
-		this.knjiga2 = knjiga;
 	}
 
 }
