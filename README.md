@@ -12,4 +12,5 @@ a onda i preuzima.
 -Ako se zelite prijaviti kao administrator paramteri su:
 
 E-mail: administrator@yahoo.com
+
 Password: adiida
