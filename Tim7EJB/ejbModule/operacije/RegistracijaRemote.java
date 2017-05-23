@@ -34,4 +34,5 @@ public interface RegistracijaRemote {
 	public boolean unesiSajam(Sajmovi s);
 	public Administrator vratiAdministratora();
 	public ArrayList<Sajmovi> prikazZanimljivosti();
+	public boolean unesiOcenuKnjige(Knjiga2 knj, String ocena);
 }

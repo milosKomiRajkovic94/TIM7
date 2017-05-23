@@ -179,4 +179,12 @@ public class Registracija implements RegistracijaRemote {
 		TypedQuery<Sajmovi> query = em.createQuery("SELECT s FROM Sajmovi s", Sajmovi.class);
 		return (ArrayList<Sajmovi>) query.getResultList();
 	}
+
+	@Override
+	public boolean unesiOcenuKnjige(Knjiga2 knj, String ocena) {
+		// TODO Auto-generated method stub
+		knj.setOcena(Integer.parseInt(ocena));
+		em.merge(knj);
+		return true;
+	}
 }
