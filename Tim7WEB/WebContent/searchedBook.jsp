@@ -37,6 +37,30 @@
 				HEIGHT="20" WIDTH="20" BORDER="0" /></td>
 		</tr>
 	</table>
+	
+	<br>
+	
+	<h2> Unesite svoju ocenu knjige: </h2>
+	
+	<form action="/Tim7WEB/UnosOceneKnjige" method="post">
+		<table>
+		<tr>
+		<td>
+			<select name="ocena">
+    	 		<option value="0">0</option>
+     			<option value="1">1</option>
+     			<option value="2">2</option>
+    	 		<option value="3">3</option>
+     			<option value="4">4</option>
+     			<option value="5">5</option>
+			</select>
+			<input type="submit" value="Oceni">
+		</td>
+		<tr>
+		</table>
+	</form>
+	
+	${messageThree}
 
 	<br>
 	<h2>Unesite dodatne podatke o knjizi:</h2>

@@ -60,6 +60,7 @@ public class InsertionOfBookServlet extends HttpServlet {
 		if(putanja.equals("")){
 			if(bestseller.equals("true")){
 				Knjiga2 knj = new Knjiga2(autor, true, naslov, oblast, opis, k);
+				knj.setOcena(0);
 				rrm.unesiKnjigu(knj);
 				message = "Uspesan unos knjige!";
 				request.setAttribute("message", message);

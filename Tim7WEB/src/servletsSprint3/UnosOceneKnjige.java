@@ -45,7 +45,7 @@ public class UnosOceneKnjige extends HttpServlet {
 		String ocena = request.getParameter("ocena");
 		if(rrm.unesiOcenuKnjige(knj, ocena)){
 			String message = "Hvala na vasoj oceni knjige!";
-			request.setAttribute("message", message);
+			request.setAttribute("messageThree", message);
 			request.getRequestDispatcher("searchedBook.jsp").forward(request, response);
 		}
 	}
