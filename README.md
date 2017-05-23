@@ -9,7 +9,7 @@ a onda i preuzima.
 
 -Potrebno je prvo pokrenuti stranicu "homePage.jsp" jer je to pocetna stranica.
 
--Ako se zelite prijaviti kao administrator paramteri su:
+-Ako se zelite prijaviti kao administrator parametri su:
 
 E-mail: administrator@yahoo.com
 
