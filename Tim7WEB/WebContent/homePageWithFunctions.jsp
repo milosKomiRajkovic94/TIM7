@@ -51,6 +51,9 @@ body {font-family: "Raleway", Arial, sans-serif}
 	<center>
 		<img src="images/slika3.png" BORDER="1"/>
 	</center>
+	<form action="bestBooks.jsp">
+				<button type="submit"> Najbolje ocenjene knjige u poslednjih mesec dana </button>
+	</form>
 	
 </body>
 </html>
